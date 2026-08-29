@@ -22,8 +22,8 @@ export default function HowItWorks() {
         />
       </section>
 
-      <section className="relative mx-auto max-w-4xl px-5 pb-20 sm:px-8 sm:pb-28">
-        <RingMotif variant="corner" className="pointer-events-none absolute -right-16 top-0 h-56 w-56 opacity-40" />
+      <section className="relative mx-auto max-w-4xl overflow-hidden px-5 pb-20 sm:px-8 sm:pb-28">
+        <RingMotif variant="corner" className="pointer-events-none absolute -right-16 top-0 hidden h-56 w-56 opacity-40 sm:block" />
         <div className="relative space-y-5">
           {processSteps.map((step) => (
             <div

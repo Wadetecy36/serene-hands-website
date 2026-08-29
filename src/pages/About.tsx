@@ -23,7 +23,7 @@ export default function About() {
   return (
     <Layout>
       <section className="relative overflow-hidden">
-        <RingMotif variant="hero" className="pointer-events-none absolute -left-32 -top-20 h-96 w-96 opacity-60" />
+        <RingMotif variant="hero" className="pointer-events-none absolute -left-32 -top-20 hidden h-96 w-96 opacity-60 sm:block" />
         <div className="relative mx-auto max-w-3xl px-5 pb-16 pt-14 text-center sm:px-8 sm:pt-20">
           <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-coral">About Serene Hands</p>
           <h1 className="text-balance font-display text-3xl font-medium text-ink sm:text-4xl">

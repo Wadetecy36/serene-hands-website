@@ -40,6 +40,10 @@
       scroll-behavior: auto !important;
     }
   }
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+  }
   body {
     background-color: var(--color-ivory);
     color: var(--color-ink);

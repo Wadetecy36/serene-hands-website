@@ -31,25 +31,25 @@ export default function Home() {
       <section className="relative overflow-hidden">
         <RingMotif
           variant="hero"
-          className="pointer-events-none absolute -right-24 top-0 h-[560px] w-[560px] opacity-90 sm:-right-10"
+          className="pointer-events-none absolute -right-24 top-0 hidden h-[560px] w-[560px] opacity-90 sm:block sm:-right-10"
         />
-        <div className="relative mx-auto grid max-w-6xl gap-10 px-5 pb-20 pt-14 sm:px-8 sm:pb-28 sm:pt-20 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+        <div className="relative mx-auto grid max-w-6xl gap-8 px-5 pb-12 pt-10 sm:gap-10 sm:px-8 sm:pb-28 sm:pt-20 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: "easeOut" }}
           >
-            <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-coral/25 bg-coral/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-coral">
+            <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-coral/25 bg-coral/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-coral sm:mb-5">
               <HeartHandshake size={14} /> Every Child. Every Ability. Every Day.
             </p>
-            <h1 className="text-balance font-display text-4xl font-medium leading-[1.08] text-ink sm:text-5xl lg:text-[3.4rem]">
+            <h1 className="text-balance font-display text-[2rem] font-medium leading-[1.12] text-ink sm:text-5xl lg:text-[3.4rem]">
               Care that meets your child exactly where they are.
             </h1>
-            <p className="mt-6 max-w-lg text-balance text-lg leading-relaxed text-ink-soft">
+            <p className="mt-4 max-w-lg text-balance text-base leading-relaxed text-ink-soft sm:mt-6 sm:text-lg">
               Compassionate, professional home care designed to help children
               with special needs learn, grow and thrive — right at home.
             </p>
-            <div className="mt-9 flex flex-wrap gap-4">
+            <div className="mt-7 flex flex-wrap gap-4 sm:mt-9">
               <Button to="/contact" size="lg" icon={<ArrowRight size={18} />}>
                 Request Care
               </Button>
@@ -63,12 +63,12 @@ export default function Home() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.15 }}
-            className="relative mx-auto flex aspect-square w-full max-w-md items-center justify-center"
+            className="relative mx-auto flex aspect-square w-full max-w-[15rem] items-center justify-center sm:max-w-md"
           >
             <div className="absolute inset-6 rounded-full bg-gradient-to-br from-coral/15 via-gold/10 to-teal/15" />
             <div className="relative flex h-full w-full items-center justify-center rounded-full border border-mist-deep bg-cloud/60 shadow-soft backdrop-blur-sm">
-              <div className="px-10 text-center">
-                <p className="font-display text-2xl font-medium text-plum">
+              <div className="px-6 text-center sm:px-10">
+                <p className="font-display text-lg font-medium text-plum sm:text-2xl">
                   "Every Child.
                   <br />
                   Every Ability.
