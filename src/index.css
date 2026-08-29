@@ -1,0 +1,64 @@
+@import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap");
+
+@theme {
+  --color-ink: #211f37;
+  --color-ink-soft: #4b4863;
+  --color-plum: #362f6b;
+  --color-plum-deep: #241f4c;
+  --color-coral: #e8637a;
+  --color-coral-soft: #f4a3ae;
+  --color-teal: #2f8f86;
+  --color-teal-soft: #8fc9c2;
+  --color-gold: #d9a54c;
+  --color-ivory: #fbf7f0;
+  --color-mist: #f2ede2;
+  --color-mist-deep: #e9e1d1;
+  --color-cloud: #ffffff;
+
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-body: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+
+  --radius-xl: 1.25rem;
+  --radius-2xl: 1.75rem;
+  --radius-3xl: 2.5rem;
+
+  --shadow-soft: 0 20px 50px -20px rgba(34, 31, 55, 0.25);
+  --shadow-card: 0 12px 30px -14px rgba(34, 31, 55, 0.18);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+  body {
+    background-color: var(--color-ivory);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-coral);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}

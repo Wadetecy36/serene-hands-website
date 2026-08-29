@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://PLACEHOLDER-DOMAIN.com/</loc><priority>1.0</priority></url>
+  <url><loc>https://PLACEHOLDER-DOMAIN.com/services</loc><priority>0.9</priority></url>
+  <url><loc>https://PLACEHOLDER-DOMAIN.com/services/personalized-care-plans</loc></url>
+  <url><loc>https://PLACEHOLDER-DOMAIN.com/services/behavior-support</loc></url>
+  <url><loc>https://PLACEHOLDER-DOMAIN.com/services/therapy-assistance</loc></url>
+  <url><loc>https://PLACEHOLDER-DOMAIN.com/services/daily-living-skills-support</loc></url>
+  <url><loc>https://PLACEHOLDER-DOMAIN.com/services/special-education-support</loc></url>
+  <url><loc>https://PLACEHOLDER-DOMAIN.com/services/companionship-respite-care</loc></url>
+  <url><loc>https://PLACEHOLDER-DOMAIN.com/services/developmental-activities</loc></url>
+  <url><loc>https://PLACEHOLDER-DOMAIN.com/about</loc><priority>0.8</priority></url>
+  <url><loc>https://PLACEHOLDER-DOMAIN.com/how-it-works</loc><priority>0.7</priority></url>
+  <url><loc>https://PLACEHOLDER-DOMAIN.com/careers</loc><priority>0.6</priority></url>
+  <url><loc>https://PLACEHOLDER-DOMAIN.com/careers/apply</loc></url>
+  <url><loc>https://PLACEHOLDER-DOMAIN.com/contact</loc><priority>0.9</priority></url>
+  <url><loc>https://PLACEHOLDER-DOMAIN.com/faq</loc><priority>0.7</priority></url>
+  <url><loc>https://PLACEHOLDER-DOMAIN.com/resources</loc><priority>0.6</priority></url>
+</urlset>
