@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { ArrowUpRight, Instagram, Music2, Play } from "lucide-react";
+import { ArrowUpRight, Camera, Music2, Play } from "lucide-react";
 import { motion } from "framer-motion";
-import { getInstagramFeed, getTikTokFeed, InstagramItem, TikTokItem } from "../lib/socialFeeds";
+import { getInstagramFeed, getTikTokFeed } from "../lib/socialFeeds";
+import type { InstagramItem, TikTokItem } from "../lib/socialFeeds";
 import Button from "./Button";
 import SectionHeading from "./SectionHeading";
 import { business } from "../data/siteConfig";
@@ -39,7 +40,7 @@ export default function SocialHub() {
           />
           <div className="flex flex-wrap gap-3">
             <a className="inline-flex items-center gap-2 rounded-full border border-blush-deep px-4 py-2 text-sm font-semibold text-ink transition hover:-translate-y-0.5 hover:border-rose" href={business.instagram} target="_blank" rel="noreferrer">
-              <Instagram size={16} /> Instagram <ArrowUpRight size={14} />
+              <Camera size={16} /> Instagram <ArrowUpRight size={14} />
             </a>
             <a className="inline-flex items-center gap-2 rounded-full border border-blush-deep px-4 py-2 text-sm font-semibold text-ink transition hover:-translate-y-0.5 hover:border-rose" href={business.tiktok} target="_blank" rel="noreferrer">
               <Music2 size={16} /> TikTok <ArrowUpRight size={14} />
@@ -50,7 +51,7 @@ export default function SocialHub() {
         <div className="mt-12 grid gap-6 lg:grid-cols-2">
           <SocialColumn
             label="Instagram"
-            icon={<Instagram size={18} />}
+            icon={<Camera size={18} />}
             configured={igConfigured}
             items={instagram}
             emptyText="Connect the Instagram API to automatically show the latest posts here."
