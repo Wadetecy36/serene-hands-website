@@ -12,8 +12,8 @@ export const business = {
   email: "serenehandshomeservices@gmail.com",
   instagram: "https://instagram.com/serenehandshomeservice",
   instagramHandle: "@serenehandshomeservice",
-  tiktok: "https://www.tiktok.com/@serenehandscare",
-  tiktokHandle: "@serenehandscare", // UNCONFIRMED — client's own posts show two different handles (serenehands010 / @serenehandshomecare); confirm before launch
+  tiktok: "https://www.tiktok.com/@serenehandshomecare",
+  tiktokHandle: "@serenehandshomecare",
   // Service area confirmed from client's Instagram/TikTok flyer (Aug 2026)
   serviceAreaLabel: "Serving communities in Kumasi & Accra",
 };
@@ -23,9 +23,11 @@ export const forms = {
   // (the part after "https://formspree.io/f/"). Until these are real IDs,
   // email delivery will fail silently and every form falls back to the
   // "Send via WhatsApp instead" button, which needs no setup at all.
-  contactFormspreeId: "PLACEHOLDER_FORM_ID",
-  careersFormspreeId: "PLACEHOLDER_FORM_ID",
-  bookingFormspreeId: "PLACEHOLDER_FORM_ID",
+  // Shared across all three forms for now — split into separate Formspree
+  // forms later if volume/notifications get noisy.
+  contactFormspreeId: "mvkokjzy",
+  careersFormspreeId: "mvkokjzy",
+  bookingFormspreeId: "mvkokjzy",
 };
 
 export const navLinks = [
