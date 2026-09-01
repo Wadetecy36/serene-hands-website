@@ -1,69 +1,47 @@
 @import "tailwindcss";
-@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap");
 
 @theme {
-  --color-ink: #2e2530;
-  --color-ink-soft: #6b5d66;
-  --color-rose: #a83358;
-  --color-rose-deep: #6b2140;
-  --color-blossom: #c2385f;
-  --color-blossom-soft: #f0afc2;
-  --color-sage: #3d6a50;
-  --color-sage-deep: #2c4f3b;
-  --color-sage-soft: #b9d9c6;
-  --color-gold: #d9a54c;
-  --color-cream: #fcf4f1;
-  --color-blush: #f8e8e6;
-  --color-blush-deep: #efd6d2;
+  --color-ink: #2b2530;
+  --color-ink-soft: #6f6670;
+  --color-rose: #6f2947;
+  --color-rose-deep: #4a1f34;
+  --color-blossom: #c75a78;
+  --color-blossom-soft: #e7a8b8;
+  --color-sage: #56745d;
+  --color-sage-deep: #3d5844;
+  --color-sage-soft: #dde9de;
+  --color-gold: #d9b66d;
+  --color-cream: #fbf6f0;
+  --color-blush: #f4e8df;
+  --color-blush-deep: #e8dcd4;
   --color-cloud: #ffffff;
-
   --font-display: "Fraunces", ui-serif, Georgia, serif;
-  --font-body: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
-
-  --radius-xl: 1.25rem;
-  --radius-2xl: 1.75rem;
-  --radius-3xl: 2.5rem;
-
-  --shadow-soft: 0 20px 50px -20px rgba(46, 37, 48, 0.25);
-  --shadow-card: 0 12px 30px -14px rgba(46, 37, 48, 0.18);
+  --font-body: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-3xl: 2rem;
+  --shadow-soft: 0 30px 80px -35px rgba(74,31,52,.28);
+  --shadow-card: 0 16px 42px -24px rgba(74,31,52,.2);
 }
 
 @layer base {
-  html {
-    scroll-behavior: smooth;
-  }
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    *, *::before, *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-      scroll-behavior: auto !important;
-    }
-  }
-  html, body {
-    overflow-x: hidden;
-    width: 100%;
-  }
-  body {
-    background-color: var(--color-cream);
-    color: var(--color-ink);
-    font-family: var(--font-body);
-    -webkit-font-smoothing: antialiased;
-  }
-  h1, h2, h3, h4 {
-    font-family: var(--font-display);
-    letter-spacing: -0.01em;
-  }
-  :focus-visible {
-    outline: 2px solid var(--color-blossom);
-    outline-offset: 3px;
-    border-radius: 4px;
-  }
+  html { scroll-behavior: smooth; }
+  body { margin:0; background:var(--color-cream); color:var(--color-ink); font-family:var(--font-body); -webkit-font-smoothing:antialiased; }
+  html,body { overflow-x:hidden; width:100%; }
+  h1,h2,h3,h4 { font-family:var(--font-display); letter-spacing:-.025em; }
+  ::selection { background:#e7a8b8; color:#4a1f34; }
+  :focus-visible { outline:3px solid var(--color-gold); outline-offset:4px; border-radius:8px; }
+  @media (prefers-reduced-motion: reduce) { html{scroll-behavior:auto} *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important} }
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+  .text-balance { text-wrap:balance; }
+  .serene-container { width:min(1180px,calc(100% - 40px)); margin-inline:auto; }
+  .serene-eyebrow { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.18em; }
+  .serene-link { position:relative; }
+  .serene-link::after { content:""; position:absolute; left:0; right:100%; bottom:-4px; height:1px; background:currentColor; transition:right .25s ease; }
+  .serene-link:hover::after { right:0; }
+  .soft-grid { background-image:linear-gradient(rgba(111,41,71,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(111,41,71,.035) 1px,transparent 1px); background-size:34px 34px; }
+  .hero-glow { background:radial-gradient(circle at 70% 20%,rgba(199,90,120,.16),transparent 28%),radial-gradient(circle at 15% 65%,rgba(86,116,93,.13),transparent 26%); }
 }

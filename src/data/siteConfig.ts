@@ -5,7 +5,7 @@
 export const business = {
   name: "Serene Hands",
   fullName: "Serene Hands Home Care Services",
-  tagline: "Every Child. Every Ability. Every Day.",
+  tagline: "Care that feels like home.",
   phone: "0597562653",
   phoneHref: "tel:+233597562653",
   whatsappHref: "https://wa.me/233597562653",
@@ -35,7 +35,7 @@ export const navLinks = [
   { label: "Services", to: "/services" },
   { label: "About", to: "/about" },
   { label: "How It Works", to: "/how-it-works" },
-  { label: "Caregivers", to: "/careers" },
+  { label: "Join Our Team", to: "/careers" },
   { label: "FAQ", to: "/faq" },
 ];
 

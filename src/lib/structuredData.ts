@@ -14,7 +14,7 @@ export function organizationJsonLd() {
     email: business.email,
     sameAs: [business.instagram, business.tiktok],
     description:
-      "Compassionate, professional home care for children with special needs.",
+      "Warm, personalized home care for children, young people, and adults, with care shaped around every person and family.",
     // No fixed premises — Serene Hands is a mobile, in-home care service
     // with no public storefront/office, so we mark it as a service-area
     // business rather than omit location entirely or invent an address.
