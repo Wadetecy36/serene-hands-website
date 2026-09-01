@@ -1,13 +1,26 @@
 import { motion } from "framer-motion";
-import { ArrowDown, ArrowRight, Heart, HeartHandshake, Sparkles, UsersRound } from "lucide-react";
+import {
+  ArrowDown,
+  ArrowRight,
+  Heart,
+  HeartHandshake,
+  Sparkles,
+  UsersRound,
+} from "lucide-react";
 import Layout from "../components/Layout";
 import Button from "../components/Button";
 import SectionHeading from "../components/SectionHeading";
 import ServiceCard from "../components/ServiceCard";
 import FAQAccordion from "../components/FAQAccordion";
+import SocialHub from "../components/SocialHub";
 import { useSeo } from "../lib/useSeo";
 import { organizationJsonLd, websiteJsonLd } from "../lib/structuredData";
-import { services, whyChooseUs, processSteps, faqs } from "../data/siteConfig";
+import {
+  services,
+  whyChooseUs,
+  processSteps,
+  faqs,
+} from "../data/siteConfig";
 
 const fade = {
   initial: { opacity: 0, y: 24 },
@@ -41,7 +54,9 @@ export default function Home() {
               Care that feels <span className="text-rose">like home.</span>
             </h1>
             <p className="mt-7 max-w-xl text-lg leading-7 text-ink-soft sm:text-xl">
-              For children, young people, and adults. Thoughtful support, genuine companionship, and care shaped around the person, not a checklist.
+              For children, young people, and adults. Thoughtful support,
+              genuine companionship, and care shaped around the person, not a
+              checklist.
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
               <Button to="/book" size="lg" icon={<ArrowRight size={18} />}>
@@ -52,7 +67,7 @@ export default function Home() {
               </Button>
             </div>
             <div className="mt-8 flex items-center gap-3 text-sm font-semibold text-ink-soft">
-              <div className="flex -space-x-2">
+              <div className="flex -space-x-2" aria-hidden="true">
                 <span className="h-8 w-8 rounded-full border-2 border-cream bg-blush" />
                 <span className="h-8 w-8 rounded-full border-2 border-cream bg-sage-soft" />
                 <span className="h-8 w-8 rounded-full border-2 border-cream bg-blossom-soft" />
@@ -72,7 +87,9 @@ export default function Home() {
               <div className="absolute -bottom-20 -left-16 h-56 w-56 rounded-full border border-gold/30" />
               <div className="relative flex h-full flex-col justify-between overflow-hidden rounded-[24px] border border-white/10 bg-[#80506a] p-7 sm:p-9">
                 <div className="flex items-center justify-between">
-                  <span className="serene-eyebrow text-white/60">Serene Hands</span>
+                  <span className="serene-eyebrow text-white/60">
+                    Serene Hands
+                  </span>
                   <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white">
                     <HeartHandshake size={19} />
                   </span>
@@ -87,19 +104,28 @@ export default function Home() {
                 <div className="mt-10 grid grid-cols-2 gap-3">
                   <div className="rounded-2xl border border-white/10 bg-white/10 p-4">
                     <UsersRound size={18} className="text-blossom-soft" />
-                    <p className="mt-5 text-sm font-semibold text-white">Children &amp; young people</p>
+                    <p className="mt-5 text-sm font-semibold text-white">
+                      Children & young people
+                    </p>
                   </div>
                   <div className="rounded-2xl border border-white/10 bg-white/10 p-4">
                     <Sparkles size={18} className="text-gold" />
-                    <p className="mt-5 text-sm font-semibold text-white">Adults &amp; families</p>
+                    <p className="mt-5 text-sm font-semibold text-white">
+                      Adults & families
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
-            <p className="mt-4 text-center text-xs font-semibold uppercase tracking-[.16em] text-ink-soft">Kumasi &amp; Accra</p>
+            <p className="mt-4 text-center text-xs font-semibold uppercase tracking-[.16em] text-ink-soft">
+              Kumasi & Accra
+            </p>
           </motion.div>
         </div>
-        <a href="#story" className="absolute bottom-5 left-1/2 hidden -translate-x-1/2 items-center gap-2 text-xs font-bold uppercase tracking-[.16em] text-ink-soft lg:flex">
+        <a
+          href="#story"
+          className="absolute bottom-5 left-1/2 hidden -translate-x-1/2 items-center gap-2 text-xs font-bold uppercase tracking-[.16em] text-ink-soft lg:flex"
+        >
           Scroll to discover <ArrowDown size={15} />
         </a>
       </section>
@@ -114,19 +140,27 @@ export default function Home() {
           </div>
           <div className="max-w-2xl">
             <p className="text-xl leading-8 text-ink">
-              Serene Hands is being built around a simple belief: good care should feel personal, respectful, and full of humanity.
+              Serene Hands is being built around a simple belief: good care
+              should feel personal, respectful, and full of humanity.
             </p>
             <p className="mt-6 text-base leading-7 text-ink-soft">
-              We support children and adults with care that fits real life at home. That means listening to families, respecting routines, celebrating small wins, and giving every person the dignity and patience they deserve.
+              We support children and adults with care that fits real life at
+              home. That means listening to families, respecting routines,
+              celebrating small wins, and giving every person the dignity and
+              patience they deserve.
             </p>
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
               <div className="rounded-2xl bg-blush p-6">
                 <p className="serene-eyebrow text-rose">For children</p>
-                <p className="mt-3 font-display text-2xl font-semibold text-ink">Room to learn, grow and be themselves.</p>
+                <p className="mt-3 font-display text-2xl font-semibold text-ink">
+                  Room to learn, grow and be themselves.
+                </p>
               </div>
               <div className="rounded-2xl bg-sage-soft p-6">
                 <p className="serene-eyebrow text-sage">For adults</p>
-                <p className="mt-3 font-display text-2xl font-semibold text-ink">Care, companionship and comfort.</p>
+                <p className="mt-3 font-display text-2xl font-semibold text-ink">
+                  Care, companionship and comfort.
+                </p>
               </div>
             </div>
           </div>
@@ -144,25 +178,45 @@ export default function Home() {
             <div className="relative overflow-hidden rounded-[28px] bg-rose p-8 text-white sm:p-10">
               <span className="absolute -right-10 -top-10 h-40 w-40 rounded-full border border-white/15" />
               <p className="serene-eyebrow text-blossom-soft">Current care</p>
-              <h3 className="mt-4 text-4xl font-semibold">Children &amp; young people</h3>
+              <h3 className="mt-4 text-4xl font-semibold">
+                Children & young people
+              </h3>
               <p className="mt-4 max-w-lg leading-7 text-white/75">
-                Personalized support for children with different needs, from daily living and companionship to developmental and educational support.
+                Personalized support for children with different needs, from
+                daily living and companionship to developmental and educational
+                support.
               </p>
               <div className="mt-7 flex flex-wrap gap-2">
-                {["Personalized care", "Development", "Companionship", "Learning support"].map((x) => (
-                  <span key={x} className="rounded-full border border-white/15 px-3 py-2 text-xs font-semibold text-white/85">
-                    {x}
+                {[
+                  "Personalized care",
+                  "Development",
+                  "Companionship",
+                  "Learning support",
+                ].map((item) => (
+                  <span
+                    key={item}
+                    className="rounded-full border border-white/15 px-3 py-2 text-xs font-semibold text-white/85"
+                  >
+                    {item}
                   </span>
                 ))}
               </div>
-              <Button to="/services" variant="secondary" className="mt-8">Explore current services</Button>
+              <Button
+                to="/services"
+                variant="secondary"
+                className="mt-8"
+              >
+                Explore current services
+              </Button>
             </div>
 
             <div className="rounded-[28px] border border-blush-deep bg-cloud p-8 sm:p-10">
               <p className="serene-eyebrow text-sage">Coming soon</p>
               <h3 className="mt-4 text-4xl font-semibold">Older adult care</h3>
               <p className="mt-4 max-w-lg leading-7 text-ink-soft">
-                We’re expanding Serene Hands to support older adults and the families who care for them. The service offering is currently being developed, and more details will be shared soon.
+                We’re expanding Serene Hands to support older adults and the
+                families who care for them. The service offering is currently
+                being developed, and more details will be shared soon.
               </p>
               <div className="mt-8 flex items-center gap-3 rounded-2xl bg-sage-soft p-4 text-sm font-semibold text-sage">
                 <Heart size={17} fill="currentColor" /> More care is on the way.
@@ -210,8 +264,12 @@ export default function Home() {
                 transition={{ delay: index * 0.05 }}
                 className="border-t border-white/15 pt-5"
               >
-                <p className="font-display text-2xl font-semibold">{item.title}</p>
-                <p className="mt-2 text-sm leading-6 text-white/60">{item.description}</p>
+                <p className="font-display text-2xl font-semibold">
+                  {item.title}
+                </p>
+                <p className="mt-2 text-sm leading-6 text-white/60">
+                  {item.description}
+                </p>
               </motion.div>
             ))}
           </div>
@@ -220,40 +278,75 @@ export default function Home() {
 
       <section className="py-20 sm:py-28">
         <div className="serene-container">
-          <SectionHeading eyebrow="The Care Journey" title="A softer way to get started." align="center" />
+          <SectionHeading
+            eyebrow="The Care Journey"
+            title="A softer way to get started."
+            align="center"
+          />
           <div className="mt-12 grid gap-0 border-y border-blush-deep lg:grid-cols-4">
             {processSteps.map((step, index) => (
-              <div key={step.number} className={`relative p-7 ${index < 3 ? "lg:border-r lg:border-blush-deep" : ""}`}>
-                <span className="serene-eyebrow text-blossom">{step.number}</span>
+              <div
+                key={step.number}
+                className={`relative p-7 ${
+                  index < 3 ? "lg:border-r lg:border-blush-deep" : ""
+                }`}
+              >
+                <span className="serene-eyebrow text-blossom">
+                  {step.number}
+                </span>
                 <h3 className="mt-4 text-2xl font-semibold">{step.title}</h3>
-                <p className="mt-3 text-sm leading-6 text-ink-soft">{step.description}</p>
+                <p className="mt-3 text-sm leading-6 text-ink-soft">
+                  {step.description}
+                </p>
               </div>
             ))}
           </div>
           <div className="mt-9 text-center">
-            <Button to="/how-it-works" variant="ghost">See the full journey</Button>
+            <Button to="/how-it-works" variant="ghost">
+              See the full journey
+            </Button>
           </div>
         </div>
       </section>
+
+      <SocialHub />
 
       <section className="bg-sage-soft py-20 sm:py-28">
         <div className="serene-container grid gap-10 lg:grid-cols-[1fr_auto] lg:items-center">
           <div>
             <p className="serene-eyebrow text-sage">For families</p>
-            <h2 className="mt-4 max-w-3xl text-4xl font-semibold leading-tight text-ink sm:text-5xl">You do not have to figure everything out alone.</h2>
-            <p className="mt-5 max-w-2xl text-lg leading-7 text-ink-soft">Start with a conversation. Tell us what life looks like right now, and we’ll take it from there.</p>
+            <h2 className="mt-4 max-w-3xl text-4xl font-semibold leading-tight text-ink sm:text-5xl">
+              You do not have to figure everything out alone.
+            </h2>
+            <p className="mt-5 max-w-2xl text-lg leading-7 text-ink-soft">
+              Start with a conversation. Tell us what life looks like right now,
+              and we’ll take it from there.
+            </p>
           </div>
-          <Button to="/book" size="lg" variant="sage" icon={<ArrowRight size={18} />}>Talk to Serene Hands</Button>
+          <Button
+            to="/book"
+            size="lg"
+            variant="sage"
+            icon={<ArrowRight size={18} />}
+          >
+            Talk to Serene Hands
+          </Button>
         </div>
       </section>
 
       <section className="py-20 sm:py-28">
         <div className="serene-container grid gap-12 lg:grid-cols-[.75fr_1.25fr]">
-          <SectionHeading eyebrow="Questions" title="If you’re wondering, ask." description="A few of the questions families ask before taking the first step." />
+          <SectionHeading
+            eyebrow="Questions"
+            title="If you’re wondering, ask."
+            description="A few of the questions families ask before taking the first step."
+          />
           <div>
             <FAQAccordion items={faqs.slice(0, 5)} />
             <div className="mt-7">
-              <Button to="/faq" variant="ghost">View all questions</Button>
+              <Button to="/faq" variant="ghost">
+                View all questions
+              </Button>
             </div>
           </div>
         </div>
@@ -263,9 +356,13 @@ export default function Home() {
         <div className="serene-container flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <p className="serene-eyebrow text-blossom">Join our team</p>
-            <h2 className="mt-3 text-3xl font-semibold">Great care starts with great people.</h2>
+            <h2 className="mt-3 text-3xl font-semibold">
+              Great care starts with great people.
+            </h2>
           </div>
-          <Button to="/careers" variant="secondary">Explore careers</Button>
+          <Button to="/careers" variant="secondary">
+            Explore careers
+          </Button>
         </div>
       </section>
     </Layout>

@@ -18,3 +18,8 @@ Hook visitors emotionally within the first viewport, then establish that Serene 
 ## Hero
 Primary CTA: Request Care. Secondary: Explore Care.
 Use human language, generous typography, and a warm editorial composition.
+
+
+## Social Hub
+
+After the care journey, show a warm “From Serene Hands” section with live Instagram and TikTok content when configured. Keep social links secondary to the primary care conversion path. If feeds are unavailable, show profile links and a clear non-error empty state.

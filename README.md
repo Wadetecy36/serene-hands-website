@@ -95,3 +95,7 @@ Service categories, support areas, contact details, and social handles
 were sourced from the Serene Hands marketing flyer. Everything else
 (page copy, structure, FAQs) was drafted to match that content and should
 be reviewed before publishing.
+
+## Social feed integration
+
+See `SOCIAL_INTEGRATION.md` for the Instagram and TikTok API feed setup.
