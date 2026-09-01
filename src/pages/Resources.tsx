@@ -24,14 +24,14 @@ export default function Resources() {
             <Link
               key={article.slug}
               to={`/resources/${article.slug}`}
-              className="group flex h-full flex-col justify-between rounded-2xl border border-mist-deep bg-cloud p-6 shadow-card transition-all hover:-translate-y-1 hover:border-coral/30"
+              className="group flex h-full flex-col justify-between rounded-2xl border border-blush-deep bg-cloud p-6 shadow-card transition-all hover:-translate-y-1 hover:border-blossom/30"
             >
               <div>
                 <p className="text-xs font-semibold uppercase tracking-wide text-ink-soft/70">{article.readingTime}</p>
                 <h3 className="mt-2 font-display text-lg font-semibold text-ink">{article.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-ink-soft">{article.excerpt}</p>
               </div>
-              <span className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-coral">
+              <span className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-blossom">
                 Read
                 <ArrowUpRight size={16} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </span>

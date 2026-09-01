@@ -36,11 +36,11 @@ type Props = ButtonAsLink | ButtonAsAnchor | ButtonAsButton;
 
 const variantStyles: Record<string, string> = {
   primary:
-    "bg-plum text-cloud hover:bg-plum-deep shadow-card",
+    "bg-rose text-cloud hover:bg-rose-deep shadow-card",
   secondary:
-    "bg-coral text-cloud hover:opacity-90 shadow-card",
+    "bg-blossom text-cloud hover:opacity-90 shadow-card",
   ghost:
-    "bg-transparent text-plum border border-plum/25 hover:bg-plum/5",
+    "bg-transparent text-rose border border-rose/25 hover:bg-rose/5",
 };
 
 const sizeStyles: Record<string, string> = {

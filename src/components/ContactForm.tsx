@@ -1,8 +1,11 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { CheckCircle2 } from "lucide-react";
 import { useState } from "react";
+import { Field, FormSuccess, inputClass } from "./FormField";
+import { business, forms } from "../data/siteConfig";
+import { submitToFormspree, buildWhatsAppLink } from "../lib/formSubmit";
+import { MessageCircle } from "lucide-react";
 
 const schema = z.object({
   fullName: z.string().min(2, "Please enter your full name"),
@@ -20,9 +23,11 @@ type FormData = z.infer<typeof schema>;
 
 export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
+  const [emailFailed, setEmailFailed] = useState(false);
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors, isSubmitting },
     reset,
   } = useForm<FormData>({
@@ -30,31 +35,53 @@ export default function ContactForm() {
     defaultValues: { preferredContact: "Phone" },
   });
 
-  const onSubmit = async () => {
-    // NOTE: this form currently submits nowhere. Wire this up to a form
-    // backend (e.g. Netlify Forms, Formspree, or a custom endpoint) before
-    // launch — see the pattern used on the Idrowhyt build.
-    await new Promise((r) => setTimeout(r, 500));
+  const values = watch();
+  const whatsappHref = buildWhatsAppLink(business.whatsappHref, [
+    `Hi Serene Hands, I'd like to request care.`,
+    values.fullName && `Name: ${values.fullName}`,
+    values.phone && `Phone: ${values.phone}`,
+    values.whoNeedsCare && `Who needs care: ${values.whoNeedsCare}`,
+    values.supportType && `Support needed: ${values.supportType}`,
+    values.location && `Location: ${values.location}`,
+    values.schedule && `Preferred schedule: ${values.schedule}`,
+    values.additionalInfo && `Additional info: ${values.additionalInfo}`,
+  ]);
+
+  const onSubmit = async (data: FormData) => {
+    const result = await submitToFormspree(forms.contactFormspreeId, data);
+    setEmailFailed(!result.ok);
     setSubmitted(true);
     reset();
   };
 
   if (submitted) {
     return (
-      <div className="flex flex-col items-center rounded-2xl border border-mist-deep bg-cloud px-6 py-14 text-center">
-        <CheckCircle2 size={40} className="text-teal" />
-        <h3 className="mt-4 font-display text-2xl font-semibold text-ink">
-          Thank you. Your request has been received.
-        </h3>
-        <p className="mt-2 max-w-sm text-sm text-ink-soft">
-          Someone from Serene Hands will be in touch to discuss the next steps.
-        </p>
-      </div>
+      <FormSuccess
+        title={emailFailed ? "Almost there — send it on WhatsApp too" : "Thank you. Your request has been received."}
+        description={
+          emailFailed
+            ? "We couldn't confirm email delivery just now. Tap below to send the same details straight to us on WhatsApp."
+            : "Someone from Serene Hands will be in touch to discuss the next steps."
+        }
+        action={
+          emailFailed ? (
+            <a
+              href={whatsappHref}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 rounded-full bg-sage px-6 py-3 text-sm font-semibold text-cloud transition-colors hover:bg-sage-deep"
+            >
+              <MessageCircle size={18} aria-hidden="true" />
+              Send via WhatsApp
+            </a>
+          ) : undefined
+        }
+      />
     );
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="rounded-2xl border border-mist-deep bg-cloud p-6 sm:p-8" noValidate>
+    <form onSubmit={handleSubmit(onSubmit)} className="rounded-2xl border border-blush-deep bg-cloud p-6 sm:p-8" noValidate>
       <div className="grid gap-5 sm:grid-cols-2">
         <Field label="Full name" error={errors.fullName?.message}>
           <input {...register("fullName")} className={inputClass} autoComplete="name" />
@@ -89,36 +116,25 @@ export default function ContactForm() {
         </Field>
       </div>
 
-      <button
-        type="submit"
-        disabled={isSubmitting}
-        className="mt-7 w-full rounded-full bg-plum px-6 py-3.5 text-sm font-semibold text-cloud transition-colors hover:bg-plum-deep disabled:opacity-60 sm:w-auto"
-      >
-        {isSubmitting ? "Sending…" : "Request Care"}
-      </button>
+      <div className="mt-7 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
+        <button
+          type="submit"
+          disabled={isSubmitting}
+          className="w-full rounded-full bg-rose px-6 py-3.5 text-sm font-semibold text-cloud transition-colors hover:bg-rose-deep disabled:opacity-60 sm:w-auto"
+        >
+          {isSubmitting ? "Sending…" : "Request Care"}
+        </button>
+        <a
+          href={whatsappHref}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex items-center gap-1.5 text-sm font-semibold text-sage hover:text-sage-deep"
+        >
+          <MessageCircle size={16} aria-hidden="true" />
+          Or send via WhatsApp instead
+        </a>
+      </div>
     </form>
   );
 }
 
-const inputClass =
-  "w-full rounded-xl border border-mist-deep bg-ivory px-4 py-3 text-sm text-ink placeholder:text-ink-soft/50 focus:border-coral focus:outline-none";
-
-function Field({
-  label,
-  error,
-  full,
-  children,
-}: {
-  label: string;
-  error?: string;
-  full?: boolean;
-  children: React.ReactNode;
-}) {
-  return (
-    <label className={`block text-sm ${full ? "sm:col-span-2" : ""}`}>
-      <span className="mb-1.5 block font-medium text-ink">{label}</span>
-      {children}
-      {error && <span className="mt-1 block text-xs font-medium text-coral">{error}</span>}
-    </label>
-  );
-}

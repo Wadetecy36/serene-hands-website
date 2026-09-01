@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Mail, Phone } from "lucide-react";
 import { business, navLinks } from "../data/siteConfig";
 import RingMotif from "./RingMotif";
+import logo from "../assets/logo-lockup.png";
 
 function InstagramIcon() {
   return (
@@ -24,7 +25,7 @@ function TikTokIcon() {
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-plum-deep text-cloud">
+    <footer className="relative overflow-hidden bg-rose-deep text-cloud">
       <RingMotif
         variant="corner"
         className="pointer-events-none absolute -right-10 -top-10 h-64 w-64 opacity-70"
@@ -32,9 +33,13 @@ export default function Footer() {
       <div className="relative mx-auto max-w-6xl px-5 py-16 sm:px-8">
         <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
           <div>
-            <span className="font-display text-xl font-semibold">
-              Serene <span className="text-coral-soft">hands</span>
-            </span>
+            <div className="inline-flex rounded-2xl bg-cream px-4 py-3">
+              <img
+                src={logo}
+                alt="Serene Hands Home Care Services"
+                className="h-14 w-auto"
+              />
+            </div>
             <p className="mt-3 max-w-xs text-sm leading-relaxed text-cloud/70">
               {business.tagline} Compassionate, professional home care for
               children with special needs.
@@ -48,13 +53,13 @@ export default function Footer() {
             <ul className="space-y-2.5">
               {navLinks.map((link) => (
                 <li key={link.to}>
-                  <Link to={link.to} className="text-sm text-cloud/80 hover:text-coral-soft">
+                  <Link to={link.to} className="text-sm text-cloud/80 hover:text-blossom-soft">
                     {link.label}
                   </Link>
                 </li>
               ))}
               <li>
-                <Link to="/resources" className="text-sm text-cloud/80 hover:text-coral-soft">
+                <Link to="/resources" className="text-sm text-cloud/80 hover:text-blossom-soft">
                   Resources
                 </Link>
               </li>
@@ -68,13 +73,13 @@ export default function Footer() {
             <ul className="space-y-2.5 text-sm text-cloud/80">
               <li className="flex items-center gap-2">
                 <Phone size={15} />
-                <a href={business.phoneHref} className="hover:text-coral-soft">
+                <a href={business.phoneHref} className="hover:text-blossom-soft">
                   {business.phone}
                 </a>
               </li>
               <li className="flex items-center gap-2">
                 <Mail size={15} />
-                <a href={`mailto:${business.email}`} className="hover:text-coral-soft break-all">
+                <a href={`mailto:${business.email}`} className="hover:text-blossom-soft break-all">
                   {business.email}
                 </a>
               </li>
@@ -92,7 +97,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Instagram"
-                className="rounded-full border border-cloud/20 p-2.5 hover:border-coral-soft hover:text-coral-soft"
+                className="rounded-full border border-cloud/20 p-2.5 hover:border-blossom-soft hover:text-blossom-soft"
               >
                 <InstagramIcon />
               </a>
@@ -101,7 +106,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="TikTok"
-                className="rounded-full border border-cloud/20 p-2.5 hover:border-coral-soft hover:text-coral-soft"
+                className="rounded-full border border-cloud/20 p-2.5 hover:border-blossom-soft hover:text-blossom-soft"
               >
                 <TikTokIcon />
               </a>

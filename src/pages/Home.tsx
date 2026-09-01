@@ -39,7 +39,7 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: "easeOut" }}
           >
-            <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-coral/25 bg-coral/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-coral sm:mb-5">
+            <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-blossom/25 bg-blossom/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-blossom sm:mb-5">
               <HeartHandshake size={14} /> Every Child. Every Ability. Every Day.
             </p>
             <h1 className="text-balance font-display text-[2rem] font-medium leading-[1.12] text-ink sm:text-5xl lg:text-[3.4rem]">
@@ -50,7 +50,7 @@ export default function Home() {
               with special needs learn, grow and thrive — right at home.
             </p>
             <div className="mt-7 flex flex-wrap gap-4 sm:mt-9">
-              <Button to="/contact" size="lg" icon={<ArrowRight size={18} />}>
+              <Button to="/book" size="lg" icon={<ArrowRight size={18} />}>
                 Request Care
               </Button>
               <Button to="/how-it-works" variant="ghost" size="lg">
@@ -65,10 +65,10 @@ export default function Home() {
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.15 }}
             className="relative mx-auto flex aspect-square w-full max-w-[15rem] items-center justify-center sm:max-w-md"
           >
-            <div className="absolute inset-6 rounded-full bg-gradient-to-br from-coral/15 via-gold/10 to-teal/15" />
-            <div className="relative flex h-full w-full items-center justify-center rounded-full border border-mist-deep bg-cloud/60 shadow-soft backdrop-blur-sm">
+            <div className="absolute inset-6 rounded-full bg-gradient-to-br from-blossom/15 via-gold/10 to-sage/15" />
+            <div className="relative flex h-full w-full items-center justify-center rounded-full border border-blush-deep bg-cloud/60 shadow-soft backdrop-blur-sm">
               <div className="px-6 text-center sm:px-10">
-                <p className="font-display text-lg font-medium text-plum sm:text-2xl">
+                <p className="font-display text-lg font-medium text-rose sm:text-2xl">
                   "Every Child.
                   <br />
                   Every Ability.
@@ -102,9 +102,9 @@ export default function Home() {
               (word) => (
                 <div
                   key={word}
-                  className="rounded-2xl border border-mist-deep bg-mist/50 px-5 py-6 text-center"
+                  className="rounded-2xl border border-blush-deep bg-blush/50 px-5 py-6 text-center"
                 >
-                  <p className="font-display text-base font-semibold text-plum">{word}</p>
+                  <p className="font-display text-base font-semibold text-rose">{word}</p>
                 </div>
               ),
             )}
@@ -113,7 +113,7 @@ export default function Home() {
       </section>
 
       {/* Support areas */}
-      <section className="bg-mist/40 py-20 sm:py-28">
+      <section className="bg-blush/40 py-20 sm:py-28">
         <div className="mx-auto max-w-6xl px-5 sm:px-8">
           <SectionHeading
             eyebrow="Who We Support"
@@ -128,7 +128,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, delay: (i % 3) * 0.08 }}
-                className="rounded-2xl border border-mist-deep bg-cloud p-6"
+                className="rounded-2xl border border-blush-deep bg-cloud p-6"
               >
                 <h3 className="font-display text-lg font-semibold text-ink">{area.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-ink-soft">{area.description}</p>
@@ -158,7 +158,7 @@ export default function Home() {
       </section>
 
       {/* Why choose us */}
-      <section className="relative overflow-hidden bg-plum py-20 text-cloud sm:py-28">
+      <section className="relative overflow-hidden bg-rose py-20 text-cloud sm:py-28">
         <RingMotif
           variant="corner"
           className="pointer-events-none absolute -left-16 bottom-0 h-72 w-72 opacity-40"
@@ -200,7 +200,7 @@ export default function Home() {
               transition={{ duration: 0.5, delay: i * 0.1 }}
               className="relative"
             >
-              <span className="font-display text-4xl font-semibold text-coral/30">{step.number}</span>
+              <span className="font-display text-4xl font-semibold text-blossom/30">{step.number}</span>
               <h3 className="mt-2 font-display text-lg font-semibold text-ink">{step.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-ink-soft">{step.description}</p>
             </motion.div>
@@ -214,7 +214,7 @@ export default function Home() {
       </section>
 
       {/* Family focused */}
-      <section className="bg-coral/5 py-20 sm:py-28">
+      <section className="bg-blossom/5 py-20 sm:py-28">
         <div className="mx-auto max-w-4xl px-5 text-center sm:px-8">
           <SectionHeading
             title="You shouldn't have to carry everything alone."
@@ -231,7 +231,7 @@ export default function Home() {
 
       {/* Caregiver CTA */}
       <section className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28">
-        <div className="grid items-center gap-10 rounded-3xl border border-mist-deep bg-mist/40 p-8 sm:p-12 lg:grid-cols-2">
+        <div className="grid items-center gap-10 rounded-3xl border border-blush-deep bg-blush/40 p-8 sm:p-12 lg:grid-cols-2">
           <SectionHeading
             eyebrow="Join Our Team"
             title="Great care starts with great people."

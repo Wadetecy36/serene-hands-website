@@ -13,9 +13,19 @@ export const business = {
   instagram: "https://instagram.com/serenehandshomeservice",
   instagramHandle: "@serenehandshomeservice",
   tiktok: "https://www.tiktok.com/@serenehandscare",
-  tiktokHandle: "@serenehandscare",
-  // Service area not yet confirmed by client — keep generic until provided
-  serviceAreaLabel: "Serving families across Ghana", // PLACEHOLDER — confirm exact coverage area
+  tiktokHandle: "@serenehandscare", // UNCONFIRMED — client's own posts show two different handles (serenehands010 / @serenehandshomecare); confirm before launch
+  // Service area confirmed from client's Instagram/TikTok flyer (Aug 2026)
+  serviceAreaLabel: "Serving communities in Kumasi & Accra",
+};
+
+export const forms = {
+  // Sign up free at formspree.io, create a form, and paste its ID here
+  // (the part after "https://formspree.io/f/"). Until these are real IDs,
+  // email delivery will fail silently and every form falls back to the
+  // "Send via WhatsApp instead" button, which needs no setup at all.
+  contactFormspreeId: "PLACEHOLDER_FORM_ID",
+  careersFormspreeId: "PLACEHOLDER_FORM_ID",
+  bookingFormspreeId: "PLACEHOLDER_FORM_ID",
 };
 
 export const navLinks = [

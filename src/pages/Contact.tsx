@@ -24,9 +24,9 @@ export default function Contact() {
           <div className="space-y-4">
             <a
               href={business.phoneHref}
-              className="flex items-center gap-4 rounded-2xl border border-mist-deep bg-cloud p-5 hover:border-coral/30"
+              className="flex items-center gap-4 rounded-2xl border border-blush-deep bg-cloud p-5 hover:border-blossom/30"
             >
-              <span className="rounded-full bg-teal/10 p-3 text-teal"><Phone size={20} /></span>
+              <span className="rounded-full bg-sage/10 p-3 text-sage"><Phone size={20} /></span>
               <div>
                 <p className="text-xs font-semibold uppercase tracking-wide text-ink-soft">Call</p>
                 <p className="font-medium text-ink">{business.phone}</p>
@@ -36,9 +36,9 @@ export default function Contact() {
               href={business.whatsappHref}
               target="_blank"
               rel="noreferrer"
-              className="flex items-center gap-4 rounded-2xl border border-mist-deep bg-cloud p-5 hover:border-coral/30"
+              className="flex items-center gap-4 rounded-2xl border border-blush-deep bg-cloud p-5 hover:border-blossom/30"
             >
-              <span className="rounded-full bg-teal/10 p-3 text-teal"><MessageCircle size={20} /></span>
+              <span className="rounded-full bg-sage/10 p-3 text-sage"><MessageCircle size={20} /></span>
               <div>
                 <p className="text-xs font-semibold uppercase tracking-wide text-ink-soft">WhatsApp</p>
                 <p className="font-medium text-ink">{business.phone}</p>
@@ -46,9 +46,9 @@ export default function Contact() {
             </a>
             <a
               href={`mailto:${business.email}`}
-              className="flex items-center gap-4 rounded-2xl border border-mist-deep bg-cloud p-5 hover:border-coral/30"
+              className="flex items-center gap-4 rounded-2xl border border-blush-deep bg-cloud p-5 hover:border-blossom/30"
             >
-              <span className="rounded-full bg-teal/10 p-3 text-teal"><Mail size={20} /></span>
+              <span className="rounded-full bg-sage/10 p-3 text-sage"><Mail size={20} /></span>
               <div>
                 <p className="text-xs font-semibold uppercase tracking-wide text-ink-soft">Email</p>
                 <p className="break-all font-medium text-ink">{business.email}</p>

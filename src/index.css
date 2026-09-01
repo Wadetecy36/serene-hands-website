@@ -2,18 +2,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap");
 
 @theme {
-  --color-ink: #211f37;
-  --color-ink-soft: #4b4863;
-  --color-plum: #362f6b;
-  --color-plum-deep: #241f4c;
-  --color-coral: #e8637a;
-  --color-coral-soft: #f4a3ae;
-  --color-teal: #2f8f86;
-  --color-teal-soft: #8fc9c2;
+  --color-ink: #2e2530;
+  --color-ink-soft: #6b5d66;
+  --color-rose: #a83358;
+  --color-rose-deep: #6b2140;
+  --color-blossom: #c2385f;
+  --color-blossom-soft: #f0afc2;
+  --color-sage: #3d6a50;
+  --color-sage-deep: #2c4f3b;
+  --color-sage-soft: #b9d9c6;
   --color-gold: #d9a54c;
-  --color-ivory: #fbf7f0;
-  --color-mist: #f2ede2;
-  --color-mist-deep: #e9e1d1;
+  --color-cream: #fcf4f1;
+  --color-blush: #f8e8e6;
+  --color-blush-deep: #efd6d2;
   --color-cloud: #ffffff;
 
   --font-display: "Fraunces", ui-serif, Georgia, serif;
@@ -23,8 +24,8 @@
   --radius-2xl: 1.75rem;
   --radius-3xl: 2.5rem;
 
-  --shadow-soft: 0 20px 50px -20px rgba(34, 31, 55, 0.25);
-  --shadow-card: 0 12px 30px -14px rgba(34, 31, 55, 0.18);
+  --shadow-soft: 0 20px 50px -20px rgba(46, 37, 48, 0.25);
+  --shadow-card: 0 12px 30px -14px rgba(46, 37, 48, 0.18);
 }
 
 @layer base {
@@ -45,7 +46,7 @@
     width: 100%;
   }
   body {
-    background-color: var(--color-ivory);
+    background-color: var(--color-cream);
     color: var(--color-ink);
     font-family: var(--font-body);
     -webkit-font-smoothing: antialiased;
@@ -55,7 +56,7 @@
     letter-spacing: -0.01em;
   }
   :focus-visible {
-    outline: 2px solid var(--color-coral);
+    outline: 2px solid var(--color-blossom);
     outline-offset: 3px;
     border-radius: 4px;
   }

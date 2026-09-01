@@ -28,9 +28,9 @@ export default function HowItWorks() {
           {processSteps.map((step) => (
             <div
               key={step.number}
-              className="flex flex-col gap-4 rounded-2xl border border-mist-deep bg-cloud p-7 sm:flex-row sm:items-start sm:gap-8"
+              className="flex flex-col gap-4 rounded-2xl border border-blush-deep bg-cloud p-7 sm:flex-row sm:items-start sm:gap-8"
             >
-              <span className="font-display text-3xl font-semibold text-coral/40">{step.number}</span>
+              <span className="font-display text-3xl font-semibold text-blossom/40">{step.number}</span>
               <div>
                 <h2 className="font-display text-xl font-semibold text-ink">{step.title}</h2>
                 <p className="mt-2 text-sm leading-relaxed text-ink-soft sm:text-base">{step.description}</p>
@@ -40,12 +40,12 @@ export default function HowItWorks() {
         </div>
       </section>
 
-      <section className="bg-plum py-16 text-cloud sm:py-20">
+      <section className="bg-rose py-16 text-cloud sm:py-20">
         <div className="mx-auto max-w-2xl px-5 text-center sm:px-8">
           <h2 className="font-display text-2xl font-medium sm:text-3xl">Ready for step one?</h2>
           <p className="mt-3 text-cloud/75">Tell us about your child, and we'll take it from there.</p>
           <div className="mt-7">
-            <Button to="/contact" size="lg" variant="secondary">Request Care</Button>
+            <Button to="/book" size="lg" variant="secondary">Request Care</Button>
           </div>
         </div>
       </section>

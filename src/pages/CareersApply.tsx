@@ -1,11 +1,14 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { CheckCircle2 } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 import Layout from "../components/Layout";
 import SectionHeading from "../components/SectionHeading";
+import { Field, FormSuccess, inputClass } from "../components/FormField";
 import { useSeo } from "../lib/useSeo";
+import { business, forms } from "../data/siteConfig";
+import { submitToFormspreeFormData, buildWhatsAppLink } from "../lib/formSubmit";
 
 const schema = z.object({
   fullName: z.string().min(2, "Please enter your full name"),
@@ -20,9 +23,6 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema>;
 
-const inputClass =
-  "w-full rounded-xl border border-mist-deep bg-ivory px-4 py-3 text-sm text-ink placeholder:text-ink-soft/50 focus:border-coral focus:outline-none";
-
 export default function CareersApply() {
   useSeo({
     title: "Apply to Join Serene Hands",
@@ -30,17 +30,39 @@ export default function CareersApply() {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [emailFailed, setEmailFailed] = useState(false);
+  const cvInputRef = useRef<HTMLInputElement>(null);
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors, isSubmitting },
     reset,
   } = useForm<FormData>({ resolver: zodResolver(schema) });
 
-  const onSubmit = async () => {
-    // NOTE: wire this to a real submission endpoint / CV upload handler
-    // before launch — currently client-side only.
-    await new Promise((r) => setTimeout(r, 500));
+  const values = watch();
+  const whatsappHref = buildWhatsAppLink(business.whatsappHref, [
+    `Hi Serene Hands, I'd like to apply to join the team.`,
+    values.fullName && `Name: ${values.fullName}`,
+    values.phone && `Phone: ${values.phone}`,
+    values.location && `Location: ${values.location}`,
+    values.experience && `Experience: ${values.experience}`,
+    values.availability && `Availability: ${values.availability}`,
+    values.qualifications && `Qualifications: ${values.qualifications}`,
+    values.introduction && `Introduction: ${values.introduction}`,
+    "(I'll attach my CV here in the chat.)",
+  ]);
+
+  const onSubmit = async (data: FormData) => {
+    const formData = new FormData();
+    Object.entries(data).forEach(([key, value]) => {
+      if (value) formData.append(key, value);
+    });
+    const file = cvInputRef.current?.files?.[0];
+    if (file) formData.append("cv", file);
+
+    const result = await submitToFormspreeFormData(forms.careersFormspreeId, formData);
+    setEmailFailed(!result.ok);
     setSubmitted(true);
     reset();
   };
@@ -56,17 +78,29 @@ export default function CareersApply() {
 
         <div className="mt-10">
           {submitted ? (
-            <div className="flex flex-col items-center rounded-2xl border border-mist-deep bg-cloud px-6 py-14 text-center">
-              <CheckCircle2 size={40} className="text-teal" />
-              <h3 className="mt-4 font-display text-2xl font-semibold text-ink">
-                Thank you. Your application has been received.
-              </h3>
-              <p className="mt-2 max-w-sm text-sm text-ink-soft">
-                Someone from Serene Hands will be in touch to discuss the next steps.
-              </p>
-            </div>
+            <FormSuccess
+              title={emailFailed ? "Almost there — send it on WhatsApp too" : "Thank you. Your application has been received."}
+              description={
+                emailFailed
+                  ? "We couldn't confirm email delivery just now. Tap below to message us on WhatsApp instead — you can attach your CV right in the chat."
+                  : "Someone from Serene Hands will be in touch to discuss the next steps."
+              }
+              action={
+                emailFailed ? (
+                  <a
+                    href={whatsappHref}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 rounded-full bg-sage px-6 py-3 text-sm font-semibold text-cloud transition-colors hover:bg-sage-deep"
+                  >
+                    <MessageCircle size={18} aria-hidden="true" />
+                    Send via WhatsApp
+                  </a>
+                ) : undefined
+              }
+            />
           ) : (
-            <form onSubmit={handleSubmit(onSubmit)} className="rounded-2xl border border-mist-deep bg-cloud p-6 sm:p-8" noValidate>
+            <form onSubmit={handleSubmit(onSubmit)} className="rounded-2xl border border-blush-deep bg-cloud p-6 sm:p-8" noValidate>
               <div className="grid gap-5 sm:grid-cols-2">
                 <Field label="Full name" error={errors.fullName?.message}>
                   <input {...register("fullName")} className={inputClass} />
@@ -93,20 +127,37 @@ export default function CareersApply() {
                   <textarea {...register("introduction")} rows={4} className={inputClass} placeholder="Tell us a bit about yourself and why you'd like to join Serene Hands." />
                 </Field>
                 <div className="sm:col-span-2">
-                  <span className="mb-1.5 block text-sm font-medium text-ink">CV upload</span>
-                  <div className="rounded-xl border border-dashed border-mist-deep bg-ivory px-4 py-6 text-center text-sm text-ink-soft">
-                    CV upload will be enabled once a submission backend is connected.
-                  </div>
+                  <label htmlFor="cv-upload" className="mb-1.5 block text-sm font-medium text-ink">
+                    CV upload (optional)
+                  </label>
+                  <input
+                    ref={cvInputRef}
+                    id="cv-upload"
+                    type="file"
+                    accept=".pdf,.doc,.docx"
+                    className="block w-full rounded-xl border border-dashed border-blush-deep bg-cream px-4 py-4 text-sm text-ink-soft file:mr-4 file:rounded-full file:border-0 file:bg-rose file:px-4 file:py-2 file:text-sm file:font-semibold file:text-cloud hover:file:bg-rose-deep"
+                  />
                 </div>
               </div>
 
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="mt-7 w-full rounded-full bg-plum px-6 py-3.5 text-sm font-semibold text-cloud transition-colors hover:bg-plum-deep disabled:opacity-60 sm:w-auto"
-              >
-                {isSubmitting ? "Sending…" : "Submit Application"}
-              </button>
+              <div className="mt-7 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full rounded-full bg-rose px-6 py-3.5 text-sm font-semibold text-cloud transition-colors hover:bg-rose-deep disabled:opacity-60 sm:w-auto"
+                >
+                  {isSubmitting ? "Sending…" : "Submit Application"}
+                </button>
+                <a
+                  href={whatsappHref}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-sage hover:text-sage-deep"
+                >
+                  <MessageCircle size={16} aria-hidden="true" />
+                  Or send via WhatsApp instead
+                </a>
+              </div>
             </form>
           )}
         </div>
@@ -115,22 +166,3 @@ export default function CareersApply() {
   );
 }
 
-function Field({
-  label,
-  error,
-  full,
-  children,
-}: {
-  label: string;
-  error?: string;
-  full?: boolean;
-  children: React.ReactNode;
-}) {
-  return (
-    <label className={`block text-sm ${full ? "sm:col-span-2" : ""}`}>
-      <span className="mb-1.5 block font-medium text-ink">{label}</span>
-      {children}
-      {error && <span className="mt-1 block text-xs font-medium text-coral">{error}</span>}
-    </label>
-  );
-}

@@ -9,11 +9,19 @@ export function organizationJsonLd() {
     "@type": "LocalBusiness",
     name: business.fullName,
     url: SITE_URL,
+    logo: `${SITE_URL}/favicon.png`,
     telephone: business.phone,
     email: business.email,
     sameAs: [business.instagram, business.tiktok],
     description:
       "Compassionate, professional home care for children with special needs.",
+    // No fixed premises — Serene Hands is a mobile, in-home care service
+    // with no public storefront/office, so we mark it as a service-area
+    // business rather than omit location entirely or invent an address.
+    areaServed: [
+      { "@type": "City", name: "Kumasi" },
+      { "@type": "City", name: "Accra" },
+    ],
   };
 }
 
@@ -33,6 +41,10 @@ export function serviceJsonLd(service: { title: string; overview: string; id: st
     name: service.title,
     description: service.overview,
     url: `${SITE_URL}/services/${service.id}`,
+    areaServed: [
+      { "@type": "City", name: "Kumasi" },
+      { "@type": "City", name: "Accra" },
+    ],
     provider: {
       "@type": "LocalBusiness",
       name: business.fullName,

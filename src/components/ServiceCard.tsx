@@ -13,13 +13,13 @@ export default function ServiceCard({ service, index = 0 }: { service: Service; 
     >
       <Link
         to={`/services/${service.id}`}
-        className="group flex h-full flex-col justify-between rounded-2xl border border-mist-deep bg-cloud p-6 shadow-card transition-all hover:-translate-y-1 hover:border-coral/30"
+        className="group flex h-full flex-col justify-between rounded-2xl border border-blush-deep bg-cloud p-6 shadow-card transition-all hover:-translate-y-1 hover:border-blossom/30"
       >
         <div>
           <h3 className="font-display text-lg font-semibold text-ink">{service.title}</h3>
           <p className="mt-2 text-sm leading-relaxed text-ink-soft">{service.shortDescription}</p>
         </div>
-        <span className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-coral">
+        <span className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-blossom">
           Learn more
           <ArrowUpRight size={16} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
         </span>

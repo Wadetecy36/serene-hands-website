@@ -24,10 +24,10 @@ export default function ServiceDetail() {
   return (
     <Layout>
       <section className="mx-auto max-w-4xl px-5 pb-16 pt-14 sm:px-8 sm:pt-20">
-        <Link to="/services" className="mb-6 inline-flex items-center gap-1.5 text-sm font-medium text-ink-soft hover:text-coral">
+        <Link to="/services" className="mb-6 inline-flex items-center gap-1.5 text-sm font-medium text-ink-soft hover:text-blossom">
           <ArrowLeft size={15} /> All services
         </Link>
-        <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-coral">Service</p>
+        <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-blossom">Service</p>
         <h1 className="text-balance font-display text-3xl font-medium text-ink sm:text-4xl">
           {service.title}
         </h1>
@@ -45,7 +45,7 @@ export default function ServiceDetail() {
             <ul className="mt-3 space-y-2.5">
               {service.whatItInvolves.map((point) => (
                 <li key={point} className="flex items-start gap-2.5 text-sm text-ink-soft">
-                  <CheckCircle2 size={16} className="mt-0.5 shrink-0 text-teal" />
+                  <CheckCircle2 size={16} className="mt-0.5 shrink-0 text-sage" />
                   {point}
                 </li>
               ))}
@@ -54,7 +54,7 @@ export default function ServiceDetail() {
         </div>
 
         <div className="mt-12 flex flex-wrap gap-4">
-          <Button to="/contact" size="lg">Request Care</Button>
+          <Button to="/book" size="lg">Request Care</Button>
           <Button to="/contact" variant="ghost" size="lg">Ask a Question</Button>
         </div>
       </section>

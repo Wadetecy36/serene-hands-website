@@ -11,7 +11,7 @@ export default function NotFound() {
   return (
     <Layout>
       <section className="mx-auto flex max-w-xl flex-col items-center px-5 py-32 text-center sm:px-8">
-        <p className="font-display text-6xl font-semibold text-coral/50">404</p>
+        <p className="font-display text-6xl font-semibold text-blossom/50">404</p>
         <h1 className="mt-4 font-display text-2xl font-medium text-ink">
           We couldn't find that page.
         </h1>

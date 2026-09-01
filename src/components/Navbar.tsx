@@ -4,6 +4,7 @@ import { Menu, X, Phone } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { business, navLinks } from "../data/siteConfig";
 import Button from "./Button";
+import logo from "../assets/logo-lockup.png";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -23,14 +24,16 @@ export default function Navbar() {
   return (
     <header
       className={`sticky top-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-ivory/90 shadow-[0_1px_0_0_rgba(34,31,55,0.08)] backdrop-blur-md" : "bg-transparent"
+        scrolled ? "bg-cream/90 shadow-[0_1px_0_0_rgba(34,31,55,0.08)] backdrop-blur-md" : "bg-transparent"
       }`}
     >
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 sm:px-8">
-        <Link to="/" className="flex items-center gap-2" onClick={() => setOpen(false)}>
-          <span className="font-display text-xl font-semibold text-plum">
-            Serene <span className="text-coral">hands</span>
-          </span>
+        <Link to="/" className="flex items-center" onClick={() => setOpen(false)}>
+          <img
+            src={logo}
+            alt="Serene Hands Home Care Services"
+            className="h-11 w-auto sm:h-12"
+          />
         </Link>
 
         <div className="hidden items-center gap-8 lg:flex">
@@ -39,8 +42,8 @@ export default function Navbar() {
               key={link.to}
               to={link.to}
               className={({ isActive }) =>
-                `text-sm font-medium transition-colors hover:text-coral ${
-                  isActive ? "text-coral" : "text-ink-soft"
+                `text-sm font-medium transition-colors hover:text-blossom ${
+                  isActive ? "text-blossom" : "text-ink-soft"
                 }`
               }
             >
@@ -52,17 +55,17 @@ export default function Navbar() {
         <div className="hidden items-center gap-3 lg:flex">
           <a
             href={business.phoneHref}
-            className="flex items-center gap-2 text-sm font-semibold text-ink-soft hover:text-plum"
+            className="flex items-center gap-2 text-sm font-semibold text-ink-soft hover:text-rose"
           >
             <Phone size={16} /> {business.phone}
           </a>
-          <Button to="/contact" size="md">
+          <Button to="/book" size="md">
             Request Care
           </Button>
         </div>
 
         <button
-          className="rounded-full p-2 text-plum lg:hidden"
+          className="rounded-full p-2 text-rose lg:hidden"
           onClick={() => setOpen((v) => !v)}
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
@@ -78,7 +81,7 @@ export default function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
-            className="overflow-hidden border-t border-mist-deep bg-ivory lg:hidden"
+            className="overflow-hidden border-t border-blush-deep bg-cream lg:hidden"
           >
             <div className="flex flex-col gap-1 px-5 py-4">
               {navLinks.map((link) => (
@@ -88,14 +91,14 @@ export default function Navbar() {
                   onClick={() => setOpen(false)}
                   className={({ isActive }) =>
                     `rounded-xl px-3 py-3 text-base font-medium ${
-                      isActive ? "bg-mist text-coral" : "text-ink-soft"
+                      isActive ? "bg-blush text-blossom" : "text-ink-soft"
                     }`
                   }
                 >
                   {link.label}
                 </NavLink>
               ))}
-              <Button to="/contact" size="md" className="mt-3 w-full">
+              <Button to="/book" size="md" className="mt-3 w-full">
                 Request Care
               </Button>
               <a

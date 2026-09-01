@@ -31,13 +31,13 @@ export default function Careers() {
         </div>
       </section>
 
-      <section className="bg-mist/40 py-20 sm:py-28">
+      <section className="bg-blush/40 py-20 sm:py-28">
         <div className="mx-auto max-w-6xl px-5 sm:px-8">
           <SectionHeading eyebrow="What We Look For" title="Qualities every Serene Hands caregiver brings." align="center" />
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {qualities.map(({ icon: Icon, title, description }) => (
-              <div key={title} className="rounded-2xl border border-mist-deep bg-cloud p-6 text-center">
-                <Icon size={26} className="mx-auto text-teal" />
+              <div key={title} className="rounded-2xl border border-blush-deep bg-cloud p-6 text-center">
+                <Icon size={26} className="mx-auto text-sage" />
                 <h3 className="mt-4 font-display text-base font-semibold text-ink">{title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-ink-soft">{description}</p>
               </div>

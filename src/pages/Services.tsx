@@ -30,7 +30,7 @@ export default function Services() {
         </div>
       </section>
 
-      <section className="bg-plum py-16 text-cloud sm:py-20">
+      <section className="bg-rose py-16 text-cloud sm:py-20">
         <div className="mx-auto max-w-3xl px-5 text-center sm:px-8">
           <h2 className="font-display text-2xl font-medium sm:text-3xl">
             Not sure which support fits your child?
@@ -39,7 +39,7 @@ export default function Services() {
             Tell us about your child and we'll help you figure out the right kind of support.
           </p>
           <div className="mt-7">
-            <Button to="/contact" size="lg" variant="secondary">
+            <Button to="/book" size="lg" variant="secondary">
               Request Care
             </Button>
           </div>

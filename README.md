@@ -15,6 +15,17 @@ npm run dev
 ```
 Opens at `http://localhost:5173`.
 
+### Booking flow (`/book`) — needs one more env step
+
+`/book` is the guardian ID-verification + child-details booking flow.
+It calls a Supabase Edge Function (see the separate
+`serene-hands-ekyc-supabase` project) for identity verification. Copy
+`.env.example` to `.env.local` and fill in `VITE_SUPABASE_URL` /
+`VITE_SUPABASE_ANON_KEY` once that project exists — until then, `/book`
+still works end-to-end (guardian can still upload ID + take a selfie
+and submit a booking), it just shows "verification is being finalized"
+instead of an automatic result, and everything routes to manual review.
+
 ## Build & preview production
 
 ```bash
@@ -53,20 +64,25 @@ src/
 
 These are intentionally left as placeholders rather than guessed at:
 
-- **Forms don't submit anywhere yet.** `src/components/ContactForm.tsx`
-  (Request Care) and `src/pages/CareersApply.tsx` (caregiver applications)
-  validate input client-side but need a real backend — e.g. Netlify Forms,
-  Formspree, or a custom endpoint.
-- **CV upload** on the careers application form isn't wired up yet — needs
-  a file-upload handler once a backend is chosen.
+- **Forms submit via Formspree + WhatsApp, but Formspree needs a real form
+  ID.** `src/components/ContactForm.tsx` (Request Care) and
+  `src/pages/CareersApply.tsx` (caregiver applications, including CV
+  upload) both POST to Formspree and fall back to a pre-filled WhatsApp
+  message if that fails. Sign up free at formspree.io, create a form, and
+  paste the ID into `contactFormspreeId` / `careersFormspreeId` /
+  `bookingFormspreeId` in `src/data/siteConfig.ts` — until then, email
+  delivery will silently fail and every submission relies on the
+  WhatsApp fallback, which works with no setup. (`/book`, the guardian
+  ID-verification booking flow, uses `bookingFormspreeId`.)
 - **Domain placeholder.** `PLACEHOLDER-DOMAIN.com` appears in
   `public/robots.txt`, `public/sitemap.xml`, `src/lib/structuredData.ts`,
   and `src/lib/useSeo.ts` (canonical URLs). Find/replace with the real
   domain once it's live — most easily once you're on Vercel with a custom
   domain attached.
-- **Service area** (`serviceAreaLabel` in `src/data/siteConfig.ts`) is a
-  generic placeholder ("Serving families across Ghana") — confirm the
-  actual coverage area.
+- **TikTok handle unconfirmed.** The client's own Instagram/TikTok
+  materials show two different handles (`serenehands010` and
+  `@serenehandshomecare`); the site currently uses `@serenehandscare`
+  (`tiktokHandle` in `src/data/siteConfig.ts`). Confirm the live one.
 - **Resource articles** (`/resources`) are stub pages (title + excerpt
   only). Full content was intentionally left unwritten pending review,
   since these will touch health-adjacent topics.

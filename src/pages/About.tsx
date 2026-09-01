@@ -25,7 +25,7 @@ export default function About() {
       <section className="relative overflow-hidden">
         <RingMotif variant="hero" className="pointer-events-none absolute -left-32 -top-20 hidden h-96 w-96 opacity-60 sm:block" />
         <div className="relative mx-auto max-w-3xl px-5 pb-16 pt-14 text-center sm:px-8 sm:pt-20">
-          <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-coral">About Serene Hands</p>
+          <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-blossom">About Serene Hands</p>
           <h1 className="text-balance font-display text-3xl font-medium text-ink sm:text-4xl">
             Care built for children — and the families raising them.
           </h1>
@@ -44,20 +44,20 @@ export default function About() {
             title="Every child. Every ability. Every day."
             description="That's not just a tagline — it's how care is approached at Serene Hands. No two children are the same, so no two care plans look the same. What stays consistent is the patience, structure and warmth every child is met with."
           />
-          <div className="rounded-3xl border border-mist-deep bg-mist/40 p-8">
-            <p className="font-display text-xl leading-relaxed text-plum">
+          <div className="rounded-3xl border border-blush-deep bg-blush/40 p-8">
+            <p className="font-display text-xl leading-relaxed text-rose">
               "Compassionate care you can trust in the comfort of your own home."
             </p>
           </div>
         </div>
       </section>
 
-      <section className="bg-mist/40 py-20 sm:py-28">
+      <section className="bg-blush/40 py-20 sm:py-28">
         <div className="mx-auto max-w-6xl px-5 sm:px-8">
           <SectionHeading eyebrow="What Guides Us" title="Care built around people, not routines." align="center" />
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {principles.map((p) => (
-              <div key={p.title} className="rounded-2xl border border-mist-deep bg-cloud p-6">
+              <div key={p.title} className="rounded-2xl border border-blush-deep bg-cloud p-6">
                 <h3 className="font-display text-lg font-semibold text-ink">{p.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-ink-soft">{p.description}</p>
               </div>
@@ -76,13 +76,13 @@ export default function About() {
         </p>
       </section>
 
-      <section className="bg-coral/5 py-16 sm:py-20">
+      <section className="bg-blossom/5 py-16 sm:py-20">
         <div className="mx-auto max-w-2xl px-5 text-center sm:px-8">
           <h2 className="font-display text-2xl font-medium text-ink sm:text-3xl">
             Let's talk about your child.
           </h2>
           <div className="mt-7">
-            <Button to="/contact" size="lg">Request Care</Button>
+            <Button to="/book" size="lg">Request Care</Button>
           </div>
         </div>
       </section>
