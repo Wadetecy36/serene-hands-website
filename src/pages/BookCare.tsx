@@ -2,14 +2,14 @@ import { useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Check, ShieldCheck, AlertTriangle, MessageCircle } from "lucide-react";
+import { Check, ShieldCheck, AlertTriangle } from "lucide-react";
 import Layout from "../components/Layout";
 import SectionHeading from "../components/SectionHeading";
 import { Field, FormSuccess, inputClass } from "../components/FormField";
 import CameraCapture from "../components/CameraCapture";
 import { useSeo } from "../lib/useSeo";
-import { business, forms } from "../data/siteConfig";
-import { submitToFormspreeFormData, buildWhatsAppLink } from "../lib/formSubmit";
+import { forms } from "../data/siteConfig";
+import { submitToFormspreeFormData } from "../lib/formSubmit";
 import { verifyGuardian, type VerificationResult } from "../lib/verifyGuardian";
 import { isSupabaseConfigured } from "../lib/supabaseClient";
 
@@ -95,41 +95,20 @@ export default function BookCare() {
     setSubmitted(true);
   };
 
-  const whatsappHref = buildWhatsAppLink(business.whatsappHref, [
-    `Hi Serene Hands, I'd like to book care.`,
-    `Booking reference: ${bookingId.slice(0, 8)}`,
-    guardianForm.getValues("fullName") && `Guardian: ${guardianForm.getValues("fullName")}`,
-    guardianForm.getValues("phone") && `Phone: ${guardianForm.getValues("phone")}`,
-    childForm.getValues("childName") && `Child: ${childForm.getValues("childName")}, age ${childForm.getValues("childAge") || "—"}`,
-    childForm.getValues("supportType") && `Support needed: ${childForm.getValues("supportType")}`,
-    childForm.getValues("location") && `Location: ${childForm.getValues("location")}`,
-    "(I'll attach my ID and selfie photo here in the chat if needed.)",
-  ]);
+
 
   if (submitted) {
     return (
       <Layout>
         <section className="mx-auto max-w-2xl px-5 py-20 sm:px-8">
           <FormSuccess
-            title={emailFailed ? "Almost there — send it on WhatsApp too" : "Booking received."}
+            title={emailFailed ? "We couldn’t send your booking yet" : "Booking received."}
             description={
               emailFailed
-                ? "We couldn't confirm email delivery just now. Tap below to send your booking details on WhatsApp instead."
-                : "Someone from Serene Hands will review your booking and be in touch shortly to confirm next steps."
+                ? "The booking could not be submitted right now. Please try again in a moment."
+                : "Someone from Serene Hands will review your booking and be in touch using the details you provided."
             }
-            action={
-              emailFailed ? (
-                <a
-                  href={whatsappHref}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full bg-sage px-6 py-3 text-sm font-semibold text-cloud transition-colors hover:bg-sage-deep"
-                >
-                  <MessageCircle size={18} aria-hidden="true" />
-                  Send via WhatsApp
-                </a>
-              ) : undefined
-            }
+
           />
         </section>
       </Layout>
@@ -146,6 +125,8 @@ export default function BookCare() {
         />
 
         <Stepper current={step} />
+
+        <p className="mt-6 rounded-xl bg-sage-soft/60 px-4 py-3 text-sm leading-6 text-ink-soft">Your booking details are submitted to the Serene Hands email inbox through Formspree. The phone and WhatsApp number is for general questions only.</p>
 
         {step === "guardian" && (
           <form onSubmit={goToChildStep} className="mt-8 rounded-2xl border border-blush-deep bg-cloud p-6 sm:p-8" noValidate>

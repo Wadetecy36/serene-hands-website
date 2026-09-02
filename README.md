@@ -72,7 +72,7 @@ These are intentionally left as placeholders rather than guessed at:
   paste the ID into `contactFormspreeId` / `careersFormspreeId` /
   `bookingFormspreeId` in `src/data/siteConfig.ts` — until then, email
   delivery will silently fail and every submission relies on the
-  WhatsApp fallback, which works with no setup. (`/book`, the guardian
+  email-only Formspree submission, which works with no setup. (`/book`, the guardian
   ID-verification booking flow, uses `bookingFormspreeId`.)
 - **Domain placeholder.** `PLACEHOLDER-DOMAIN.com` appears in
   `public/robots.txt`, `public/sitemap.xml`, `src/lib/structuredData.ts`,

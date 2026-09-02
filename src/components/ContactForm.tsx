@@ -3,9 +3,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useState } from "react";
 import { Field, FormSuccess, inputClass } from "./FormField";
-import { business, forms } from "../data/siteConfig";
-import { submitToFormspree, buildWhatsAppLink } from "../lib/formSubmit";
-import { MessageCircle } from "lucide-react";
+import { forms } from "../data/siteConfig";
+import { submitToFormspree } from "../lib/formSubmit";
 
 const schema = z.object({
   fullName: z.string().min(2, "Please enter your full name"),
@@ -35,17 +34,6 @@ export default function ContactForm() {
     defaultValues: { preferredContact: "Phone" },
   });
 
-  const values = watch();
-  const whatsappHref = buildWhatsAppLink(business.whatsappHref, [
-    `Hi Serene Hands, I'd like to request care.`,
-    values.fullName && `Name: ${values.fullName}`,
-    values.phone && `Phone: ${values.phone}`,
-    values.whoNeedsCare && `Who needs care: ${values.whoNeedsCare}`,
-    values.supportType && `Support needed: ${values.supportType}`,
-    values.location && `Location: ${values.location}`,
-    values.schedule && `Preferred schedule: ${values.schedule}`,
-    values.additionalInfo && `Additional info: ${values.additionalInfo}`,
-  ]);
 
   const onSubmit = async (data: FormData) => {
     const result = await submitToFormspree(forms.contactFormspreeId, data);
@@ -57,31 +45,20 @@ export default function ContactForm() {
   if (submitted) {
     return (
       <FormSuccess
-        title={emailFailed ? "Almost there — send it on WhatsApp too" : "Thank you. Your request has been received."}
+        title={emailFailed ? "We couldn’t send your request yet" : "Thank you. Your request has been received."}
         description={
           emailFailed
-            ? "We couldn't confirm email delivery just now. Tap below to send the same details straight to us on WhatsApp."
-            : "Someone from Serene Hands will be in touch to discuss the next steps."
+            ? "The form could not be submitted right now. Please try again in a moment."
+            : "Someone from Serene Hands will be in touch using the details you provided."
         }
-        action={
-          emailFailed ? (
-            <a
-              href={whatsappHref}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-sage px-6 py-3 text-sm font-semibold text-cloud transition-colors hover:bg-sage-deep"
-            >
-              <MessageCircle size={18} aria-hidden="true" />
-              Send via WhatsApp
-            </a>
-          ) : undefined
-        }
+
       />
     );
   }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="rounded-2xl border border-blush-deep bg-cloud p-6 sm:p-8" noValidate>
+      <p className="mb-6 rounded-xl bg-sage-soft/60 px-4 py-3 text-sm leading-6 text-ink-soft">Care requests submitted here are sent to the Serene Hands email inbox through Formspree. The phone and WhatsApp number is for general questions only.</p>
       <div className="grid gap-5 sm:grid-cols-2">
         <Field label="Full name" error={errors.fullName?.message}>
           <input {...register("fullName")} className={inputClass} autoComplete="name" />
@@ -124,15 +101,7 @@ export default function ContactForm() {
         >
           {isSubmitting ? "Sending…" : "Request Care"}
         </button>
-        <a
-          href={whatsappHref}
-          target="_blank"
-          rel="noreferrer"
-          className="inline-flex items-center gap-1.5 text-sm font-semibold text-sage hover:text-sage-deep"
-        >
-          <MessageCircle size={16} aria-hidden="true" />
-          Or send via WhatsApp instead
-        </a>
+
       </div>
     </form>
   );

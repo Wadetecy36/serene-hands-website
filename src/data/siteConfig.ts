@@ -20,9 +20,9 @@ export const business = {
 
 export const forms = {
   // Sign up free at formspree.io, create a form, and paste its ID here
-  // (the part after "https://formspree.io/f/"). Until these are real IDs,
-  // email delivery will fail silently and every form falls back to the
-  // "Send via WhatsApp instead" button, which needs no setup at all.
+  // (the part after "https://formspree.io/f/"). All website forms are
+  // submitted to Formspree. The client's private phone/WhatsApp number is
+  // for questions only and is never used as a form fallback.
   // Shared across all three forms for now — split into separate Formspree
   // forms later if volume/notifications get noisy.
   contactFormspreeId: "mvkokjzy",
@@ -260,7 +260,7 @@ export const faqs = [
   {
     question: "How do I request care?",
     answer:
-      "Reach out through the Request Care form, call, or WhatsApp us. We'll talk through your child's needs and take it from there.",
+      "Use the Request Care form to send your details securely through our form system. For general questions, you can also call or WhatsApp us.",
   },
   {
     question: "How does the care plan get built?",
