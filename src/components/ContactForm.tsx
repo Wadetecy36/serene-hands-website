@@ -26,7 +26,6 @@ export default function ContactForm() {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors, isSubmitting },
     reset,
   } = useForm<FormData>({
